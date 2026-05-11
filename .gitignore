@@ -10,6 +10,9 @@
 .venv/
 .vs/
 .vscode/
+.mise.toml
+mise.toml
+*.local.toml
 *.iml
 *.ipr
 *.iws
