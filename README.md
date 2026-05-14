@@ -48,9 +48,7 @@ From `src/currencyservice/`:
 ```bash
 # install dependencies
 npm install
-```
 
-```bash
 export PORT=3000
 export GCLOUD_PROJECT="microservices-demo"
 
