@@ -39,5 +39,3 @@ export PAYMENT_SERVICE_ADDR=localhost:50056
 
 go run main.go
 ```
-
-For local testing, dependent service environment variables can be configured with localhost addresses.
