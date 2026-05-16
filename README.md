@@ -1,16 +1,16 @@
 | service | runtime | environment variables | external dependencies |
 |---|---|---|---|
-| adservice | Java 21 | `PORT=9555`, `DISABLE_STATS`, `DISABLE_TRACING` | none |
-| cartservice | .NET 10 | `PORT=5000`, `REDIS_ADDR`, `SPANNER_PROJECT`, `SPANNER_CONNECTION_STRING`, `ALLOYDB_PRIMARY_IP` | optional: Redis/Spanner/AlloyDB |
-| checkoutservice | Go 1.25 | `PORT=5050`, `SHIPPING_SERVICE_ADDR`, `PRODUCT_CATALOG_SERVICE_ADDR`, `CART_SERVICE_ADDR`, `CURRENCY_SERVICE_ADDR`, `EMAIL_SERVICE_ADDR`, `PAYMENT_SERVICE_ADDR` | required: shippingservice, productcatalogservice, cartservice, currencyservice, emailservice, paymentservice |
-| currencyservice | Node.js 18.19.0 | `PORT`, `GCLOUD_PROJECT`, `DISABLE_PROFILER`, `ENABLE_TRACING`, `COLLECTOR_SERVICE_ADDR`, `OTEL_SERVICE_NAME` | none |
-| emailservice | Python 3.11 | `PORT=8080`, `ENABLE_TRACING`, `COLLECTOR_SERVICE_ADDR`, `DISABLE_PROFILER`, `GCP_PROJECT_ID` | none |
-| frontend | Go 1.25 | `BASE_URL`, `PACKAGING_SERVICE_URL`, `ENABLE_SINGLE_SHARED_SESSION`, `PORT`, `LISTEN_ADDR`, `PRODUCT_CATALOG_SERVICE_ADDR`, `CURRENCY_SERVICE_ADDR`, `CART_SERVICE_ADDR`, `RECOMMENDATION_SERVICE_ADDR`, `CHECKOUT_SERVICE_ADDR`, `SHIPPING_SERVICE_ADDR`, `AD_SERVICE_ADDR`, `FRONTEND_MESSAGE`, `CYMBAL_BRANDING`, `ENV_PLATFORM`, `ENABLE_TRACING`, `ENABLE_PROFILER` | required: productcatalogservice, currencyservice, cartservice, recommendationservice, checkoutservice, shippingservice, adservice |
+| adservice | Java 21 | • `PORT=9555` `DISABLE_STATS` `DISABLE_TRACING` | none |
+| cartservice | .NET 10 | • `PORT=5000` `REDIS_ADDR` `SPANNER_PROJECT`<br>• `SPANNER_CONNECTION_STRING` `ALLOYDB_PRIMARY_IP` | optional:<br>• Redis, Spanner, AlloyDB |
+| checkoutservice | Go 1.25 |  • `PORT=5050`<br>• `SHIPPING_SERVICE_ADDR`<br>• `PRODUCT_CATALOG_SERVICE_ADDR`<br>• `CART_SERVICE_ADDR`<br>• `CURRENCY_SERVICE_ADDR`<br>• `EMAIL_SERVICE_ADDR`<br>• `PAYMENT_SERVICE_ADDR` | required: <br>• shippingservice <br>• productcatalogservice <br>• cartservice<br>• currencyservice <br>• emailservice <br>• paymentservice |
+| currencyservice | Node.js 18.19.0 | • `PORT` `GCLOUD_PROJECT` `DISABLE_PROFILER`<br>• `ENABLE_TRACING` `COLLECTOR_SERVICE_ADDR`<br>• `OTEL_SERVICE_NAME` | none |
+| emailservice | Python 3.11 | • `PORT=8080` `ENABLE_TRACING`<br>• `COLLECTOR_SERVICE_ADDR` `DISABLE_PROFILER`<br>• `GCP_PROJECT_ID` | none |
+| frontend | Go 1.25 | • `BASE_URL` `PACKAGING_SERVICE_URL`<br>• `ENABLE_SINGLE_SHARED_SESSION` `PORT` `LISTEN_ADDR`<br>• `PRODUCT_CATALOG_SERVICE_ADDR` `CURRENCY_SERVICE_ADDR`<br>• `CART_SERVICE_ADDR` `RECOMMENDATION_SERVICE_ADDR`<br>• `CHECKOUT_SERVICE_ADDR` `SHIPPING_SERVICE_ADDR`<br>• `AD_SERVICE_ADDR` `FRONTEND_MESSAGE`<br>• `CYMBAL_BRANDING` `ENV_PLATFORM`<br>• `ENABLE_TRACING`  `ENABLE_PROFILER` | required: <br>• productcatalogservice <br>• currencyservice <br>• cartservice <br>• recommendationservice <br>• checkoutservice<br>• shippingservice <br>• adservice |
 | loadgenerator | Python 3.11 | none | none |
-| paymentservice | Node.js 20 | `PORT`, `DISABLE_PROFILER`, `ENABLE_TRACING`, `COLLECTOR_SERVICE_ADDR`, `OTEL_SERVICE_NAME` | none |
-| productcatalogservice | Go 1.25 | `PORT=3550`, `ENABLE_TRACING`, `DISABLE_PROFILER`, `EXTRA_LATENCY`, `ALLOYDB_CLUSTER_NAME`, `PROJECT_ID`, `REGION`, `ALLOYDB_INSTANCE_NAME`, `ALLOYDB_DATABASE_NAME`, `ALLOYDB_TABLE_NAME`, `ALLOYDB_SECRET_NAME` | none |
-| recommendationservice | Python 3.11 | `PORT=8080`, `GCP_PROJECT_ID`, `DISABLE_PROFILER`, `ENABLE_TRACING`, `COLLECTOR_SERVICE_ADDR`, `PRODUCT_CATALOG_SERVICE_ADDR` | required: productcatalogservice |
-| shippingservice | Go 1.25 | `PORT=50051`, `DISABLE_TRACING`, `DISABLE_PROFILER`, `DISABLE_STATS` | none |
+| paymentservice | Node.js 20 | • `PORT` `DISABLE_PROFILER`<br>• `ENABLE_TRACING` `COLLECTOR_SERVICE_ADDR`<br>• `OTEL_SERVICE_NAME` | none |
+| productcatalogservice | Go 1.25 | • `PORT=3550` `ENABLE_TRACING` `DISABLE_PROFILER`<br>• `EXTRA_LATENCY` `ALLOYDB_CLUSTER_NAME` `PROJECT_ID`<br>• `REGION` `ALLOYDB_INSTANCE_NAME`<br>• `ALLOYDB_DATABASE_NAME` `ALLOYDB_TABLE_NAME`<br>• `ALLOYDB_SECRET_NAME` | none |
+| recommendationservice | Python 3.11 | • `PORT=8080` `GCP_PROJECT_ID`<br>• `DISABLE_PROFILER` `ENABLE_TRACING`<br>• `COLLECTOR_SERVICE_ADDR` `PRODUCT_CATALOG_SERVICE_ADDR` | required:<br>• productcatalogservice |
+| shippingservice | Go 1.25 | • `PORT=50051` `DISABLE_TRACING`<br>• `DISABLE_PROFILER` `DISABLE_STATS` | none |
 
 ## Ad Service
 
