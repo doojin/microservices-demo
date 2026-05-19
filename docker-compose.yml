@@ -1,0 +1,8 @@
+services:
+  adservice:
+      build:
+        context: ./src/adservice
+        dockerfile: Dockerfile
+      ports:
+        - "9555:9555"
+    

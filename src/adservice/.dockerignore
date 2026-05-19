@@ -1,0 +1,7 @@
+*.log
+.gradle
+README.md
+target/
+build/
+out/
+.gradle/
