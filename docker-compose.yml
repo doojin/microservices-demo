@@ -3,6 +3,20 @@ services:
       build:
         context: ./src/adservice
         dockerfile: Dockerfile
+
+      environment:
+        PORT: 9555
+        
       ports:
         - "9555:9555"
-    
+
+  cartservice:
+      build:
+        context: ./src/cartservice/src
+        dockerfile: Dockerfile
+
+      environment:
+        PORT: 8080
+
+      ports:
+        - "8080:8080"
