@@ -1,7 +1,7 @@
 | service | runtime | environment variables | external dependencies |
 |---|---|---|---|
 | adservice | Java 21 |- `PORT=9555`<br>- `DISABLE_STATS`<br>- `DISABLE_TRACING` | none |
-| cartservice | .NET 10 |- `PORT=5000`<br>- `REDIS_ADDR`<br>- `SPANNER_PROJECT`<br>- `SPANNER_CONNECTION_STRING`<br>- `ALLOYDB_PRIMARY_IP` | optional:<br>- Redis<br>- Spanner<br>- AlloyDB |
+| cartservice | .NET 10 |- `PORT=8080`<br>- `REDIS_ADDR`<br>- `SPANNER_PROJECT`<br>- `SPANNER_CONNECTION_STRING`<br>- `ALLOYDB_PRIMARY_IP` | optional:<br>- Redis<br>- Spanner<br>- AlloyDB |
 | checkoutservice | Go 1.25 |  - `PORT=5050`<br>- `SHIPPING_SERVICE_ADDR`<br>- `PRODUCT_CATALOG_SERVICE_ADDR`<br>- `CART_SERVICE_ADDR`<br>- `CURRENCY_SERVICE_ADDR`<br>- `EMAIL_SERVICE_ADDR`<br>- `PAYMENT_SERVICE_ADDR` | required: <br>- shippingservice <br>- productcatalogservice <br>- cartservice<br>- currencyservice <br>- emailservice <br>- paymentservice |
 | currencyservice | Node.js 18.19.0 | - `PORT`<br>- `GCLOUD_PROJECT`<br>- `DISABLE_PROFILER`<br>- `ENABLE_TRACING`<br>- `COLLECTOR_SERVICE_ADDR`<br>- `OTEL_SERVICE_NAME` | none |
 | emailservice | Python 3.11 | - `PORT=8080`<br>- `ENABLE_TRACING`<br>- `COLLECTOR_SERVICE_ADDR`<br>- `DISABLE_PROFILER`<br>- `GCP_PROJECT_ID` | none |
