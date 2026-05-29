@@ -1,0 +1,8 @@
+Dockerfile
+.dockerignore
+**/bin/
+**/obj/
+**/publish/
+*.log
+.git/
+.gitignore
