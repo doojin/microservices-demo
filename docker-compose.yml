@@ -28,12 +28,12 @@ services:
       environment:
         PORT: 5050
 
-        SHIPPING_SERVICE_ADDR: 50051
-        PRODUCT_CATALOG_SERVICE_ADDR: 50052
-        CART_SERVICE_ADDR: 50053
-        CURRENCY_SERVICE_ADDR: 50054
-        EMAIL_SERVICE_ADDR: 50055
-        PAYMENT_SERVICE_ADDR: 50056
+        SHIPPING_SERVICE_ADDR: shippingservice:50051
+        PRODUCT_CATALOG_SERVICE_ADDR: productcatalogservice:3550
+        CART_SERVICE_ADDR: cartservice:8080
+        CURRENCY_SERVICE_ADDR: currencyservice:3000
+        EMAIL_SERVICE_ADDR: emailservice:8080
+        PAYMENT_SERVICE_ADDR: paymentservice:3000
 
       ports:
         - "5050:5050"
