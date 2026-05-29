@@ -19,3 +19,21 @@ services:
 
       ports:
         - "8080:8080"
+
+  checkoutservice:
+      build:
+        context: ./src/checkoutservice
+        dockerfile: Dockerfile
+
+      environment:
+        PORT: 5050
+
+        SHIPPING_SERVICE_ADDR: 50051
+        PRODUCT_CATALOG_SERVICE_ADDR: 50052
+        CART_SERVICE_ADDR: 50053
+        CURRENCY_SERVICE_ADDR: 50054
+        EMAIL_SERVICE_ADDR: 50055
+        PAYMENT_SERVICE_ADDR: 50056
+
+      ports:
+        - "5050:5050"
