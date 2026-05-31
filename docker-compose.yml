@@ -37,3 +37,16 @@ services:
 
       ports:
         - "5050:5050"
+
+  currencyservice:
+      build:
+        context: ./src/currencyservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 3000
+
+        GCLOUD_PROJECT: "microservices-demo"
+        
+      ports:
+        - "3000:3000"
