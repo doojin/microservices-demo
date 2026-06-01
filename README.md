@@ -59,7 +59,7 @@ npm install
 
 # required environment variables
 export PORT=3000
-export GCLOUD_PROJECT="microservices-demo"
+export DISABLE_PROFILER=1
 
 # run executable
 node server.js
