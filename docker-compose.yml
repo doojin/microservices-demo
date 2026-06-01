@@ -46,7 +46,7 @@ services:
       environment:
         PORT: 3000
 
-        GCLOUD_PROJECT: "microservices-demo"
+        DISABLE_PROFILER: 1
         
       ports:
         - "3000:3000"

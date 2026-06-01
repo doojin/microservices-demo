@@ -1,6 +1,6 @@
-FROM node:18.19.0-slim
+FROM node:20-slim AS builder
 
-WORKDIR /app
+WORKDIR /build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
@@ -20,19 +20,20 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.48 \
     && wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 \
     && chmod +x /bin/grpc_health_probe
 
-RUN useradd nodejs \
-    --no-create-home \
-    --uid 1001 \
-    --shell /usr/sbin/nologin \
-    && chown -R nodejs:nodejs /app
+FROM gcr.io/distroless/nodejs20-debian12 AS starter
 
-USER nodejs
+WORKDIR /app
+
+COPY --from=builder --chown=nonroot:nonroot /build .
+COPY --from=builder /bin/grpc_health_probe /bin/grpc_health_probe
 
 ENV PORT=3000
 
-EXPOSE ${PORT}
+EXPOSE 3000
+
+USER nonroot:nonroot
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
-  CMD /bin/grpc_health_probe -addr=localhost:${PORT} || exit 1
+  CMD ["/bin/grpc_health_probe", "-addr=localhost:3000"]
 
-CMD ["node", "server.js"]
+CMD ["server.js"]
