@@ -1,4 +1,4 @@
-FROM node:20-slim AS builder
+FROM node:24-slim AS builder
 
 WORKDIR /build
 
@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY package*.json ./ 
 
-RUN npm ci --omit=dev \
+RUN npm install -g npm@11.16.0 \
+    && npm ci --omit=dev \
     && npm cache clean --force
 
 COPY . .
@@ -20,7 +21,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.48 \
     && wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 \
     && chmod +x /bin/grpc_health_probe
 
-FROM gcr.io/distroless/nodejs20-debian12 AS starter
+FROM gcr.io/distroless/nodejs24-debian12 AS starter
 
 WORKDIR /app
 
