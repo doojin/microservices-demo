@@ -50,3 +50,15 @@ services:
         
       ports:
         - "3000:3000"
+
+
+  emailservice:
+      build:
+        context: ./src/emailservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 8080
+        
+      ports:
+        - "8081:8080"
