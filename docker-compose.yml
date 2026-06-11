@@ -89,3 +89,14 @@ services:
 
       depends_on:
         - frontend
+
+  paymentservice:
+      build:
+        context: ./src/paymentservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 3001
+        
+      ports:
+        - "3001:3001"
