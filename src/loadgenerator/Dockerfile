@@ -19,4 +19,7 @@ RUN useradd appuser \
 
 USER appuser
 
-CMD ["locust", "-f", "locustfile.py", "--headless", "--host=http://frontend:8080"]
+ENV USERS=5
+ENV SPAWN_RATE=1
+
+CMD ["sh", "-c", "locust -f locustfile.py --users=$USERS --spawn-rate=$SPAWN_RATE --headless --host=http://frontend:8080"]
