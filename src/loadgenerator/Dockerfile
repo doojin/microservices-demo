@@ -17,9 +17,10 @@ RUN useradd appuser \
   --shell /usr/sbin/nologin \
   && chown -R appuser:appuser /app
 
+ENV LOCUST_SPAWN_RATE=1
+ENV LOCUST_USERS=5
+ENV LOCUST_HOST=http://frontend:8080
+
 USER appuser
 
-ENV USERS=5
-ENV SPAWN_RATE=1
-
-CMD ["sh", "-c", "locust -f locustfile.py --users=$USERS --spawn-rate=$SPAWN_RATE --headless --host=http://frontend:8080"]
+CMD ["locust", "-f", "locustfile.py", "--headless"]
