@@ -33,7 +33,7 @@ services:
         CART_SERVICE_ADDR: cartservice:8080
         CURRENCY_SERVICE_ADDR: currencyservice:3000
         EMAIL_SERVICE_ADDR: emailservice:8080
-        PAYMENT_SERVICE_ADDR: paymentservice:3000
+        PAYMENT_SERVICE_ADDR: paymentservice:3001
 
       ports:
         - "5050:5050"
@@ -81,14 +81,6 @@ services:
 
       ports:
         - "8082:8080"
-
-  loadgenerator:
-      build:
-        context: ./src/loadgenerator
-        dockerfile: Dockerfile
-
-      depends_on:
-        - frontend
 
   paymentservice:
       build:

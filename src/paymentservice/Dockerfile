@@ -11,8 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY package*.json ./
 
-RUN npm install -g npm@11.16.0 \
-    && npm ci --omit=dev \
+RUN npm ci --omit=dev \
     && npm cache clean --force
 
 COPY . .
