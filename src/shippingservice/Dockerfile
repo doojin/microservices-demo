@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY . . 
 
-RUN CGO_ENABLED=0 go build -o /shippingservice-svc
+RUN CGO_ENABLED=0 go build -o /shipping-svc
 
 RUN apt-get update -y \
     && apt-get install -y wget \
@@ -20,7 +20,7 @@ FROM gcr.io/distroless/static-debian12 AS starter
 
 WORKDIR /app 
 
-COPY --from=builder --chown=nonroot:nonroot /shippingservice-svc /shippingservice-svc
+COPY --from=builder --chown=nonroot:nonroot /shipping-svc /shipping-svc
 COPY --from=builder /bin/grpc_health_probe /bin/grpc_health_probe
 
 ENV PORT=50051
@@ -32,4 +32,4 @@ USER nonroot:nonroot
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD ["/bin/grpc_health_probe", "-addr=localhost:50051"]
 
-CMD ["/shippingservice-svc"]
+CMD ["/shipping-svc"]
