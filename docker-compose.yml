@@ -81,3 +81,11 @@ services:
 
       ports:
         - "8082:8080"
+
+  loadgenerator:
+      build:
+        context: ./src/loadgenerator
+        dockerfile: Dockerfile
+
+      depends_on:
+        - frontend
