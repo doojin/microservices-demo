@@ -81,3 +81,16 @@ services:
 
       ports:
         - "8082:8080"
+
+  recommendationservice:
+      build:
+        context: ./src/recommendationservice
+        dockerfile: Dockerfile
+
+      environment:
+        PORT: 8080
+
+        PRODUCT_CATALOG_SERVICE_ADDR: productcatalogservice:3550
+        
+      ports:
+        - "8083:8080"
