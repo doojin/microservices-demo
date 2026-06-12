@@ -1,0 +1,6 @@
+/bin/
+/vendor/
+/debug/
+.gitignore
+Dockerfile
+README.md
