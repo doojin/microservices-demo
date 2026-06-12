@@ -81,3 +81,14 @@ services:
 
       ports:
         - "8082:8080"
+
+  shippingservice:
+      build:
+        context: ./src/shippingservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 50051
+        
+      ports:
+        - "50051:50051"
