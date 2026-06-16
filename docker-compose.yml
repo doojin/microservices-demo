@@ -92,3 +92,49 @@ services:
         
       ports:
         - "3001:3001"
+  shippingservice:
+      build:
+        context: ./src/shippingservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 50051
+        
+      ports:
+        - "50051:50051"
+        
+  loadgenerator:
+      build:
+        context: ./src/loadgenerator
+        dockerfile: Dockerfile
+      
+      environment:
+        LOCUST_SPAWN_RATE: 1
+        LOCUST_USERS: 5
+        LOCUST_HOST: http://frontend:8080      
+
+      depends_on:
+        - frontend
+  recommendationservice:
+      build:
+        context: ./src/recommendationservice
+        dockerfile: Dockerfile
+
+      environment:
+        PORT: 8080
+
+        PRODUCT_CATALOG_SERVICE_ADDR: productcatalogservice:3550
+        
+      ports:
+        - "8083:8080"
+        
+  productcatalogservice:
+      build:
+        context: ./src/productcatalogservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 3550
+        
+      ports:
+        - "3550:3550"
