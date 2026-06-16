@@ -33,7 +33,7 @@ services:
         CART_SERVICE_ADDR: cartservice:8080
         CURRENCY_SERVICE_ADDR: currencyservice:3000
         EMAIL_SERVICE_ADDR: emailservice:8080
-        PAYMENT_SERVICE_ADDR: paymentservice:3000
+        PAYMENT_SERVICE_ADDR: paymentservice:3001
 
       ports:
         - "5050:5050"
@@ -82,6 +82,16 @@ services:
       ports:
         - "8082:8080"
 
+  paymentservice:
+      build:
+        context: ./src/paymentservice
+        dockerfile: Dockerfile
+      
+      environment:
+        PORT: 3001
+        
+      ports:
+        - "3001:3001"
   shippingservice:
       build:
         context: ./src/shippingservice
