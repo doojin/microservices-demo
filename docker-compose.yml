@@ -93,6 +93,18 @@ services:
       ports:
         - "50051:50051"
         
+  loadgenerator:
+      build:
+        context: ./src/loadgenerator
+        dockerfile: Dockerfile
+      
+      environment:
+        LOCUST_SPAWN_RATE: 1
+        LOCUST_USERS: 5
+        LOCUST_HOST: http://frontend:8080      
+
+      depends_on:
+        - frontend
   recommendationservice:
       build:
         context: ./src/recommendationservice
