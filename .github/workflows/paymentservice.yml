@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/paymentservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: paymentservice
+      context: ./src/paymentservice
+      dockerfile: ./src/paymentservice/Dockerfile

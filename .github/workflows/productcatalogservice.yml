@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/productcatalogservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: productcatalogservice
+      context: ./src/productcatalogservice
+      dockerfile: ./src/productcatalogservice/Dockerfile

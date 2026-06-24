@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/loadgenerator/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: loadgenerator
+      context: ./src/loadgenerator
+      dockerfile: ./src/loadgenerator/Dockerfile

@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/currencyservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: currencyservice
+      context: ./src/currencyservice
+      dockerfile: ./src/currencyservice/Dockerfile
