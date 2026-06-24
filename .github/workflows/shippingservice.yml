@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/shippingservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: shippingservice
+      context: ./src/shippingservice
+      dockerfile: ./src/shippingservice/Dockerfile

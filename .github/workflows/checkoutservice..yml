@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/checkoutservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: checkoutservice
+      context: ./src/checkoutservice
+      dockerfile: ./src/checkoutservice/Dockerfile

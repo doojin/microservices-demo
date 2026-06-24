@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/cartservice/**
+
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      service: cartservice
+      context: ./src/cartservice/src
+      dockerfile: ./src/cartservice/src/Dockerfile
